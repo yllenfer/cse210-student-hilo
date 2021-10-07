@@ -31,6 +31,11 @@ class Dealer:
             self.player.get_card_number()
             print(f"This card is {self.player.card_number}")
             card_guess = input("Higher or lower? [h/l]: ")
+            try:
+                card_guess(str)
+            except:
+                print("Please enter a letter")
+                continue
             second_number = random.randint(1, 13)
             if second_number >= self.player.card_number and card_guess == "h":
                 self.score += 100
@@ -49,7 +54,3 @@ class Dealer:
                 self.playing = True
             elif keep == "n":
                 self.playing = False
-
-
-
-
