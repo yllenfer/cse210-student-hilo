@@ -23,7 +23,6 @@ class Player:
             self.score -= 75
         elif second_number <= self.card_number and card_guess == "l":
             self.score += 100
-        elif self.score == 0:
-            print("Game over!")
         print(f"Next card was:{second_number}")
         print(f"Your score is: {self.score}")
+

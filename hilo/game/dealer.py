@@ -29,8 +29,7 @@ class Dealer:
             self.keep()
 
     def updates(self):
-        points = self.player.points_calculation()
-        return points
+        return self.player.points_calculation()
 
     def out_puts(self):
 
