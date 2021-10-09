@@ -1,5 +1,5 @@
 # TODO: Add entry point code here
-from hilo.game.dealer import Dealer
+from game.dealer import Dealer
 
 dealer = Dealer()
 dealer.start_game()

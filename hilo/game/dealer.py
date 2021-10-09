@@ -15,7 +15,6 @@ from game.player import Player
 class Dealer:
     def __init__(self):
         self.playing = True
-        self.score = 300
         self.player = Player()
 
     def input(self):
@@ -25,32 +24,22 @@ class Dealer:
         # if we are playing we need to get stuff
         while self.playing:
             self.out_puts()
+            self.input()
+            self.updates()
+            self.keep()
+
+    def updates(self):
+        points = self.player.points_calculation()
+        return points
 
     def out_puts(self):
-        while self.playing:
-            self.player.get_card_number()
-            print(f"This card is {self.player.card_number}")
-            card_guess = input("Higher or lower? [h/l]: ")
-            second_number = random.randint(1, 13)
-            # try:
-            #     card_guess(int)
-            # except:
-            #     print("Please enter a letter")
-            #     continue
-            if second_number >= self.player.card_number and card_guess == "h":
-                self.score += 100
-            elif second_number <= self.player.card_number and card_guess == "h":
-                self.score -= 75
-            elif second_number >= self.player.card_number and card_guess == "l":
-                self.score -= 75
-            elif second_number <= self.player.card_number and card_guess == "l":
-                self.score += 100
-            elif self.score == 0:
-                print("Game over!")
-            print(f"Next card was:{second_number}")
-            print(f"Your score is: {self.score}")
-            keep = input("Keep playing? [y/n]")
-            if keep == "y":
-                self.playing = True
-            elif keep == "n":
-                self.playing = False
+
+        self.player.get_card_number()
+        print(f"\nThis card is {self.player.card_number}")
+
+    def keep(self):
+        keep = input("Keep playing? [y/n]")
+        if keep == "y":
+            self.playing = True
+        elif keep == "n":
+            self.playing = False
